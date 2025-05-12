@@ -4,7 +4,7 @@
     "slug": "CW-TechTrack",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/cloudways-logo.png",
     "scheme": "cwtechtrack",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
