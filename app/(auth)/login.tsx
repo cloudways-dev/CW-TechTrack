@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/firebase/config';
 import { Image } from 'expo-image';
 import {
   StyleSheet,
@@ -19,6 +21,14 @@ export default function HomeScreen() {
   const [password, setPassword] = useState('');
   const [secureText, setSecureText] = useState(true); // Password visibility toggle
 
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.error('Login failed:', error);
+      alert('Login failed. Please check your credentials.');
+    }
+  };
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#FFF' }}
@@ -75,7 +85,7 @@ export default function HomeScreen() {
           </View>
 
           {/* Login Button */}
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
             <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
         </View>
